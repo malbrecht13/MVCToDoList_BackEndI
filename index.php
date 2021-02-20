@@ -13,8 +13,17 @@
 
     switch($action) {
         case 'list_items':
+            $category_id = filter_input(INPUT_GET, 'category_id', FILTER_VALIDATE_INT);
             $items = get_items_by_category($category_id);
-            include('item_list.php');
+            $categories = get_categories();
+            include('view/item_list.php');
+            break;
+        case 'delete_item':
+            $item_num = filter_input(INPUT_POST, 'itemNum', FILTER_VALIDATE_INT);
+            if($item_num) {
+                delete_item($item_num);
+                include('.');
+            }
             break;
     }
 ?>

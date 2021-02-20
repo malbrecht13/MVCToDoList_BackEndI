@@ -4,8 +4,10 @@
             get_items();
         } else {
             global $db;
-            $query = 'SELECT * FROM ToDoItems
-                  WHERE categoryID = :category_id
+            $query = 'SELECT * FROM ToDoItems 
+                  INNER JOIN categories 
+                  ON categories.categoryID = ToDoItems.categoryID
+                  WHERE ToDoItems.categoryID = :category_id
                   ORDER BY Title';
             $statement = $db->prepare($query);
             $statement->bindValue(':category_id', $category_id);
@@ -21,7 +23,9 @@
         global $db;
         $query = 'SELECT *
                 FROM ToDoItems
-                ORDER BY categoryID, Title';
+                INNER JOIN categories 
+                ON categories.categoryID = ToDoItems.categoryID
+                ORDER BY ToDoItems.categoryID, Title';
         $statement = $db->prepare($query);
         $statement->execute();
         $items = $statement->fetchAll();

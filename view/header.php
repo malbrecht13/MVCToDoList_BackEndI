@@ -8,7 +8,8 @@
     <!-- Bootstrap 4.5.2 -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="view/css/main.css">
 </head>
-<body>
-    <header><h1 class="text-left">To Do </h1></header>
+<body class="container-fluid">
+    <header><h1 id="header-title" class="text-left text-primary">To Do </h1></header>
+    <main>
