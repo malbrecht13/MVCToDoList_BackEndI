@@ -47,12 +47,12 @@
     function add_item($category_id, $title, $description) {
         global $db;
         $query = 'INSERT INTO ToDoItems (Title, Description, categoryID)
-                    VALUES (:title, :description, 
+                    VALUES (:title, :description, :categoryID)
                     WHERE categoryID = :category_id';
         $statement = $db->prepare($query);
         $statement->bindValue(':title', $title);
         $statement->bindValue(':description', $description);
-        $statement->bindValue(':category_id', $category_name);
+        $statement->bindValue(':category_id', $category_id);
         $statement->execute();
         $statement->closeCursor();
     }

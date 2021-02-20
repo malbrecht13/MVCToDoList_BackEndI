@@ -54,10 +54,10 @@ td {
 }
 
 footer {
-    position: fixed;
     width: 100%;
     bottom: 0;  
     text-align: center;
+    z-index: -1;
 }
 
 a {
@@ -81,3 +81,38 @@ a {
     margin: 0 auto;
     max-width: 500px;
 }
+
+.add-item-div {
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    min-height: 40vh;
+    margin: 0 auto;
+}
+
+.add_item_element {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+}
+
+#add-item-box select {
+    margin-right: 0;
+}
+
+.add-item-div button {
+    margin-top: 20px;
+}
+
+#add-cat-div {
+    margin-top: 10px;
+}
+
+#cat-h2 {
+    margin-top: 50px;
+}
+
+
+
+

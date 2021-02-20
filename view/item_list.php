@@ -1,16 +1,17 @@
 <?php include('header.php'); ?>
     
-    <form action="." method="get">
+    <form action="." method="post">
         <input type="hidden" name="action" value="list_items">
         <div id="category-select-div">
             <label for="select-box">Category</label>
-            <select name="category_id" id="select-box">
-                <?php foreach ($categories as $category) : ?>
-                    <option value="<?= $category['categoryID'] ?>">
-                        <?= $category['categoryName'] ?>
-                    </option>
-                <?php endforeach; ?>    
-            </select>
+                <select name="category_id" id="select-box">
+                    <option value="0">View All Categories</option>
+                    <?php foreach ($categories as $category) : ?>
+                        <option value="<?= $category['categoryID'] ?>">
+                            <?= $category['categoryName'] ?>
+                        </option>
+                    <?php endforeach; ?>      
+                </select>
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>
     </form>
@@ -41,8 +42,8 @@
     </table>
     </div>
     <div class="link-div container">
-        <a class="text-center" href="add_item_form.php">Add Another Item To List</a><br>
-        <a class="text-center" href="category_list.php">View/Edit Categories</a>
+        <a class="text-center" href="?action=add_item">Add Another Item To List</a><br>
+        <a class="text-center" href="?action=edit_categories">View/Edit Categories</a>
      </div>
     
     
