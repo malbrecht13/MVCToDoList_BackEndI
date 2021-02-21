@@ -14,31 +14,55 @@
 
     switch($action) {
         case 'list_items':
-            $category_id = filter_input(INPUT_POST, 'category_id', FILTER_VALIDATE_INT);
-            $items = get_items_by_category($category_id);
-            if(!$category_id) $category_id = 0;
-            $categories = get_categories();
-            include('view/item_list.php');
+            try {
+                $category_id = filter_input(INPUT_POST, 'category_id', FILTER_VALIDATE_INT);
+                 $items = get_items_by_category($category_id);
+                if(!$category_id) $category_id = 0;
+                $categories = get_categories();
+                include('view/item_list.php');
+            } catch(Exception $e) {
+                include('view/error.php');
+                break;
+            }
             break;
         case 'delete_item':
-            $item_num = filter_input(INPUT_POST, 'itemNum', FILTER_VALIDATE_INT);
+            try {
+                $item_num = filter_input(INPUT_POST, 'itemNum', FILTER_VALIDATE_INT);
             if($item_num) {
                 delete_item($item_num);
                 header('Location: .?action=list_items');
+            } } catch(Exception $e) {
+                include('view/error.php');
+                break;
             }
             break;
         case 'add_item':
-            $categories = get_categories();
-            include('view/add_item_form.php');
+            try {
+                $categories = get_categories();
+                include('view/add_item_form.php');
+            } catch(Exception $e) {
+                include('view/error.php');
+                break;
+            }
             break;
         case 'edit_categories':
-            $categories = get_categories();
-            include('view/category_list.php'); 
+            try {
+                $categories = get_categories();
+                include('view/category_list.php'); 
+            } catch(Exception $e) {
+                include('view/error.php');
+                break;
+            }
             break;
         case 'add_category_name':
-            $name = filter_input(INPUT_POST, 'cat_name', FILTER_SANITIZE_STRING);
-            add_category($name);
-            header('Location: .?action=edit_categories');
+            try {
+                $name = filter_input(INPUT_POST, 'cat_name', FILTER_SANITIZE_STRING);
+                add_category($name);
+                header('Location: .?action=edit_categories');
+            } catch (Exception $e) {
+                include('view/error.php');
+                break;
+            }
             break;
         case 'insert_item':
             $category_id = filter_input(INPUT_POST, 'category_id', FILTER_VALIDATE_INT);
