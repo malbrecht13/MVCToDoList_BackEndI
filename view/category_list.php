@@ -27,8 +27,9 @@
                 <tr class="text-center">
                     <td><?= $category['categoryName']; ?></td>
                     <td>
-                        <form action="../index.php" method="post">
-                            <input type="hidden" action="delete_category"
+                        <form action="." method="post">
+                            <input type="hidden" name="action" value="delete_category">
+                            <input type="hidden" name="category_id"
                                 value="<?= $category['categoryID']; ?>">
                             <button type="submit" class="btn btn-danger">
                                 Delete Category
@@ -40,7 +41,7 @@
         </tbody>
     </table>
     <h2 id="cat-h2" class="text-center text-primary">Add Category</h2>
-    <form id="category-form" action="../index.php" method="post">
+    <form id="category-form" action="." method="post">
         <input type="hidden" name="action" value="add_category_name">
         <div class="add-item-div" id="add-cat-div">
             <div class="add_item_element">
@@ -53,7 +54,7 @@
         </div>
     </form>
     <div class="link-div container">
-        <a class="text-center" href="../?action=list_items">View To Do List</a><br>
+        <a class="text-center" href=".?action=list_items">View To Do List</a><br>
     </div>
 
 <?php include('footer.php'); ?>

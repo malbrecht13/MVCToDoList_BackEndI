@@ -1,7 +1,7 @@
 <?php
     function get_items_by_category($category_id) {
         if(!$category_id) {
-            get_items();
+            return get_items();
         } else {
             global $db;
             $query = 'SELECT * FROM ToDoItems 
@@ -46,13 +46,12 @@
 
     function add_item($category_id, $title, $description) {
         global $db;
-        $query = 'INSERT INTO ToDoItems (Title, Description, categoryID)
-                    VALUES (:title, :description, :categoryID)
-                    WHERE categoryID = :category_id';
+        $query = 'INSERT INTO ToDoItems (`categoryID`, `Title`, `Description`)
+                    VALUES (:categoryID, :title, :description)';
         $statement = $db->prepare($query);
+        $statement->bindValue(':categoryID', $category_id);
         $statement->bindValue(':title', $title);
         $statement->bindValue(':description', $description);
-        $statement->bindValue(':category_id', $category_id);
         $statement->execute();
         $statement->closeCursor();
     }

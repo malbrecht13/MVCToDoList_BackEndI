@@ -1,3 +1,5 @@
-<?php echo "server error!"
-
+<h1>There was an error completing the task:</h1>
+<?php echo $e;
 ?>
+
+<a href=".?action=list_items">Return to App</a>

@@ -13,10 +13,9 @@
 <body class="container-fluid">
     <header><h1 id="header-title" class="text-left text-primary">To Do </h1></header>
     <main>
-
     <h2 class="text-center text-primary">Add Item</h2>
     <div class="container-fluid">
-        <form action="index.php" method="post">
+        <form action="./index.php" method="post">
             <input type="hidden" name="action" value="insert_item">
             <div class="add-item-div" id="add-item-box">
                 <div class="add_item_element">
@@ -36,15 +35,15 @@
                 </div>
                 <div class="add_item_element">
                     <label for="description">Description:</label>
-                    <input type="text" name="description" id="description" maxlength="30">
+                    <input type="text" name="description" id="description" maxlength="30" required>
                 </div>
                 <button class="btn btn-primary" type="submit">Add Item</button>
             </div>
         </form>
     </div>
     <div class="link-div container">
-        <a class="text-center" href="../?action=list_items">View To Do List</a><br>
-        <a class="text-center" href="../?action=edit_categories">View/Edit Categories</a>
+        <a class="text-center" href=".?action=list_items">View To Do List</a><br>
+        <a class="text-center" href=".?action=edit_categories">View/Edit Categories</a>
     </div>
     
 
