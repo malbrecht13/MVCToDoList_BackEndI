@@ -1,10 +1,14 @@
 <?php
 
-    require('model/autoload.php');
+    $url = getenv('JAWSDB_URL');
+    $dbparts = parse_url($url);
 
-    $dsn = env('DB_DSN');
-    $username = env('DB_USERNAME');
-    $password = env('DB_PASSWORD');
+    $hostname = $dbparts['host'];
+    $username = $dbparts['user'];
+    $password = $dbparts['pass'];
+    $database = ltrim($dbparts['path'],'/');
+
+    $dsn = 'mysql:host=hostname;dbname=$database';
 
     try {
         $db = new PDO($dsn, $username, $password);
