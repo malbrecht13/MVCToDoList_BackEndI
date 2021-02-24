@@ -1,6 +1,6 @@
 <?php
 
-    require('config.php');
+    require('model/config.php');
 
     try {
         $db = new PDO($dsn, $username, $password);
